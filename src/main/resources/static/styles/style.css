@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Palatino Linotype';
+}
+
+div, img, a {
+    /* border: 1px dashed black; */
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: #fff3eb;
+    background-image: url(../images/interface/background.png);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 1000px;
+    margin: 0 auto;
+
+    border: 2px solid black;
+    /* border-left: 2px solid black; */
+    box-shadow: 9px 0px 9px #c7c7c7;
+    background-color: white;
+}
+
+.header_and_main_div {
+    flex: 1 0 auto;
+}
+
+header {
+    display: flex;
+    height: 100px;
+    border-bottom: 2px dashed;
+}
+
+main {
+    display: flex;
+}
+
+footer {
+    flex: 0 0 auto;
+    border-top: 2px dashed black;
+    padding: 10px;
+}
+
+nav {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.nav_logo_div{
+    display: flex;
+    width: 200px;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.nav_logo_img {
+    max-width: 100%;
+}
+
+.nav_basket_div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100px;
+}
+
+.nav_basket_img {
+    display: block;
+    max-width: 100%;
+}
+
+.nav_menu_div {
+    display: flex;
+    align-items: center;
+}
+
+.nav_menu_button {
+    box-sizing: border-box;
+    height: 100%;
+    width: 100px;
+    padding-top: 37px;
+    text-align: center;
+    color: black;
+    font-size: 1.3em;
+    text-decoration: none;
+}
+
+.nav_menu_button:hover {
+    background-color: #dfdfdf;
+    text-decoration: underline;
+}
+
+@font-face {
+    font-family: "Palatino Linotype"; 
+    src: url("../fonts/PalatinoLinotype.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+} 
