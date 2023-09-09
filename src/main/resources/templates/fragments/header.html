@@ -1,0 +1,20 @@
+<th:block xmlns:th="http://www.thymeleaf.org" th:fragment="header1">
+  <nav>
+    <div class="nav_logo_div">
+      <a th:href="@{/#}"><img class="nav_logo_img" th:src="@{/images/interface/logo.png}" title="Главная"></a>
+    </div>
+
+    <div class="nav_menu_div">
+      <a class="nav_menu_button" th:href="@{/pizza}">Пицца</a>
+      <a class="nav_menu_button" th:href="@{/wok}">Вок</a>
+      <a class="nav_menu_button" th:href="@{/roll}">Ролл</a>
+      <a class="nav_menu_button" th:href="@{/#}">Профиль</a>
+    </div>
+
+    <div class="nav_basket_div">
+      <!-- <a href='#'>Корзина</a> -->
+      <a id="a1" th:href="@{/#}"><img class="nav_basket_img" th:src="@{images/interface/basket.png}" title="Корзина"></a>
+
+    </div>
+  </nav>
+</th:block>

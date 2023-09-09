@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Pizza Wok</title>
@@ -8,37 +8,24 @@
 <body>
 <div class="wrapper">
     <div class="header_and_main_div">
-        <header>
-            <nav>
-                <div class="nav_logo_div">
-                    <a th:href="@{/#}"><img class="nav_logo_img" th:src="@{/images/interface/logo.png}" title="Главная"></a>
-                </div>
 
-                <div class="nav_menu_div">
-                    <a class="nav_menu_button" th:href="@{/#}">Пицца</a>
-                    <a class="nav_menu_button" th:href="@{/#}">Вок</a>
-                    <a class="nav_menu_button" th:href="@{/#}">Ролл</a>
-                    <a class="nav_menu_button" th:href="@{/#}">Профиль</a>
-                </div>
-
-                <div class="nav_basket_div">
-                    <!-- <a href='#'>Корзина</a> -->
-                    <a id="a1" th:href="@{/#}"><img class="nav_basket_img" th:src="@{images/interface/basket.png}" title="Корзина"></a>
-
-                </div>
-            </nav>
-        </header>
+        <header th:insert="~{fragments/header :: header1}"></header>
 
         <main>
-            <h2>Контент</h2>
-
+            <div class="dish_menu">
+                <div class="dish_card" th:each="dish : ${dishes}">
+                    <img class="dish_img" th:src="@{${'/images/content/dishes/' + dish.image}}">
+                    <div class="dish_card_footer">
+                        <p class="dish_name" th:text="${dish.name}">Название блюда</p>
+                        <p class="dish_description" th:text="${dish.description}">Описание блюда</p>
+                    </div>
+                </div>
+            </div>
         </main>
 
     </div>
 
-    <footer>
-        <p>&#169; Авторские права никому не принадлежат. Сайт является демонстрацией невероятных способностей некоего Габиева Г.М. в создании веб-приложений. Все названия вымышлены, совпадения случайны.</p>
-    </footer>
+    <footer th:insert="~{fragments/footer :: footer1}"></footer>
 
 </div>
 

@@ -21,7 +21,7 @@ body {
 .wrapper {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    min-height: 100%;
     width: 1000px;
     margin: 0 auto;
 
@@ -103,9 +103,44 @@ nav {
     text-decoration: underline;
 }
 
+.dish_menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.dish_card {
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 300px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.dish_img {
+    width: 300px;
+    height: 300px;
+}
+
+.dish_card_footer {
+    padding: 10px;
+}
+
+.dish_name {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.dish_description {
+    font-size: 0.9em;
+    color: #8b8b8b;
+}
+
 @font-face {
     font-family: "Palatino Linotype"; 
     src: url("../fonts/PalatinoLinotype.ttf") format("truetype"); 
     font-style: normal; 
     font-weight: normal; 
 } 
+
