@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pizza Wok</title>
+    <link th:href="@{styles/style.css}" rel='stylesheet' type='text/css'></link>
+</head>
+<body>
+<div class="wrapper">
+    <div class="header_and_main_div">
+
+        <header th:insert="~{fragments/header :: header1}"></header>
+
+        <main>
+            <div class="dish_menu">
+                <div class="dish_card" th:each="dish : ${dishes}">
+                    <img class="dish_img" th:src="@{${'/images/content/dishes/' + dish.image}}">
+                    <div class="dish_card_footer">
+                        <p class="dish_name" th:text="${dish.name}">Название блюда</p>
+                        <p class="dish_description" th:text="${dish.description}">Описание блюда</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <footer th:insert="~{fragments/footer :: footer1}"></footer>
+
+</div>
+
+</body>
+</html>

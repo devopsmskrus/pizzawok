@@ -24,18 +24,18 @@ public class MainController {
     @GetMapping("/pizza")
     public String getPizza(Model model) {
         model.addAttribute("dishes", dishRepo.getAllPizzas());
-        return "main";
+        return "menu";
     }
 
     @GetMapping("/wok")
     public String getWok(Model model) {
         model.addAttribute("dishes", dishRepo.getAllWoks());
-        return "main";
+        return "menu";
     }
 
     @GetMapping("/roll")
     public String getRoll(Model model) {
         model.addAttribute("dishes", dishRepo.getAllRolls());
-        return "main";
+        return "menu";
     }
 }

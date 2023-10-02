@@ -137,6 +137,88 @@ nav {
     color: #8b8b8b;
 }
 
+.main_content {
+    width: 100%;
+    padding: 20px;
+}
+
+.main_h1 {
+    width: 100%;
+    text-align: center;
+}
+
+.main_h2 {
+    width: 100%;
+    text-align: center;
+    font-weight: normal;
+    margin-top: 15px;
+}
+
+.main_h3 {
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+    margin-top: 30px;
+}
+
+.main_menu {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    height: 365px;
+}
+
+.main_menu_button {
+    border-radius: 10px;
+    width: 300px;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.main_menu_button:hover {
+    border: 1px solid black;
+    box-shadow: 0px 0px 9px black;
+}
+
+.main_menu_button_img {
+    width: 300px;
+    height: 300px;
+}
+
+.main_menu_button_description {
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.additional_info {
+    padding: 30px 10px;
+}
+
+.additional_info_card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    margin-bottom: 50px;
+}
+
+.additional_info_img {
+    width: 100px;
+    height: 100px;
+}
+
+.additional_info_description {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 20px;
+    text-align: left;
+    width: 700px;
+}
+
 @font-face {
     font-family: "Palatino Linotype"; 
     src: url("../fonts/PalatinoLinotype.ttf") format("truetype"); 

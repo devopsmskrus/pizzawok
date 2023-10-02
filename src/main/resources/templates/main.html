@@ -12,12 +12,38 @@
         <header th:insert="~{fragments/header :: header1}"></header>
 
         <main>
-            <div class="dish_menu">
-                <div class="dish_card" th:each="dish : ${dishes}">
-                    <img class="dish_img" th:src="@{${'/images/content/dishes/' + dish.image}}">
-                    <div class="dish_card_footer">
-                        <p class="dish_name" th:text="${dish.name}">Название блюда</p>
-                        <p class="dish_description" th:text="${dish.description}">Описание блюда</p>
+            <div class="main_content">
+                <h1 class="main_h1">Добро пожаловать в Pizzawok!</h1>
+                <h2 class="main_h2">
+                    Pizzawok - это самая вымышленная сеть ресторанов России. Убедитесь сами!
+                    Выберите блюда из нашего разнообразного меню, которое вовсе не было скопировано из
+                    другой популярной сети ресторанов с похожим названием. Оформите заказ с доставкой и
+                    Вы увидите как ничего не произойдет. Мы ценим своих клиентов. Мы рады и благодарны, что Вы выбрали Pizzawok!
+                </h2>
+                <h3 class="main_h3">Наше меню</h3>
+                <div class="main_menu">
+                    <a class="main_menu_button" href="#">
+                        <img class="main_menu_button_img" th:src="@{/images/interface/main_menu_pizza.png}">
+                        <p class="main_menu_button_description">Пицца</p>
+                    </a>
+                    <a class="main_menu_button" href="#">
+                        <img class="main_menu_button_img" th:src="@{/images/interface/main_menu_wok.png}">
+                        <p class="main_menu_button_description">Вок</p>
+                    </a>
+                    <a class="main_menu_button" href="#">
+                        <img class="main_menu_button_img" th:src="@{/images/interface/main_menu_roll.png}">
+                        <p class="main_menu_button_description">Ролл</p>
+                    </a>
+                </div>
+                <hr>
+                <div class="additional_info">
+                    <div class="additional_info_card">
+                        <img class="additional_info_img" th:src="@{/images/interface/github.png}">
+                        <p class="additional_info_description">Исходный код данного сайт можно посмотреть на github.com</p>
+                    </div>
+                    <div class="additional_info_card">
+                        <img class="additional_info_img" th:src="@{/images/interface/gabiev.png}">
+                        <p class="additional_info_description">"Если вы не работодатель в поисках талантливого начинающего web-разработчика, то пошли вон отсюдова" - Габиев Г.М.</p>
                     </div>
                 </div>
             </div>
