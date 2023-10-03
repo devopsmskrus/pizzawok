@@ -18,19 +18,19 @@
                     Pizzawok - это самая вымышленная сеть ресторанов России. Убедитесь сами!
                     Выберите блюда из нашего разнообразного меню, которое вовсе не было скопировано из
                     другой популярной сети ресторанов с похожим названием. Оформите заказ с доставкой и
-                    Вы увидите как ничего не произойдет. Мы ценим своих клиентов. Мы рады и благодарны, что Вы выбрали Pizzawok!
+                    Вы увидите, как ничего не произойдет. Мы ценим своих клиентов. Мы рады и благодарны, что Вы выбрали Pizzawok!
                 </h2>
                 <h3 class="main_h3">Наше меню</h3>
                 <div class="main_menu">
-                    <a class="main_menu_button" href="#">
+                    <a class="main_menu_button" th:href="@{/pizza}">
                         <img class="main_menu_button_img" th:src="@{/images/interface/main_menu_pizza.png}">
                         <p class="main_menu_button_description">Пицца</p>
                     </a>
-                    <a class="main_menu_button" href="#">
+                    <a class="main_menu_button" th:href="@{/wok}">
                         <img class="main_menu_button_img" th:src="@{/images/interface/main_menu_wok.png}">
                         <p class="main_menu_button_description">Вок</p>
                     </a>
-                    <a class="main_menu_button" href="#">
+                    <a class="main_menu_button" th:href="@{/roll}">
                         <img class="main_menu_button_img" th:src="@{/images/interface/main_menu_roll.png}">
                         <p class="main_menu_button_description">Ролл</p>
                     </a>
@@ -39,7 +39,7 @@
                 <div class="additional_info">
                     <div class="additional_info_card">
                         <img class="additional_info_img" th:src="@{/images/interface/github.png}">
-                        <p class="additional_info_description">Исходный код данного сайт можно посмотреть на github.com</p>
+                        <p class="additional_info_description">Исходный код данного сайта можно посмотреть на <a href="https://github.com/gabiev987/pizzawok">github</a></p>
                     </div>
                     <div class="additional_info_card">
                         <img class="additional_info_img" th:src="@{/images/interface/gabiev.png}">

@@ -111,6 +111,8 @@ nav {
 }
 
 .dish_card {
+    display: flex;
+    flex-direction: column;
     border: 1px solid black;
     border-radius: 10px;
     width: 300px;
@@ -118,23 +120,80 @@ nav {
     overflow: hidden;
 }
 
+.dish_card_main_block {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+}
+
 .dish_img {
     width: 300px;
     height: 300px;
 }
 
-.dish_card_footer {
-    padding: 10px;
-}
-
 .dish_name {
     font-size: 1.3em;
     font-weight: bold;
+    margin: 10px;
 }
 
 .dish_description {
     font-size: 0.9em;
     color: #8b8b8b;
+    margin: 0px 10px;
+}
+
+.dish_card_footer_block {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    flex: 0 0 auto;
+    padding: 10px;
+}
+
+.dish_card_price {
+    display: inline-block;
+    font-size: 1.5em;
+    margin: auto 0;
+}
+
+.dish_card_buttons_block {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.dish_plus_button_long {
+    font-size: 1.5em;
+    border: 2px solid red;
+    border-radius: 25px;
+    background-color: white;
+    color: red;
+    padding: 5px 10px;
+}
+
+.dish_minus_button_short, .dish_plus_button_short {
+    font-size: 1.5em;
+    border: 2px solid red;
+    border-radius: 25px;
+    background-color: white;
+    color: red;
+    padding: 5px 10px;
+    width: 50px;
+}
+
+.dish_plus_button_long:hover,
+.dish_minus_button_short:hover,
+.dish_plus_button_short:hover {
+    background-color: red;
+    color: white;
+}
+
+.dish_card_count {
+    font-size: 1.5em;
+    margin: auto 0;
+    padding: 0 10px;
+    font-weight: bold;
 }
 
 .main_content {
@@ -217,6 +276,7 @@ nav {
     margin-left: 20px;
     text-align: left;
     width: 700px;
+    font-size: 1.3em;
 }
 
 @font-face {

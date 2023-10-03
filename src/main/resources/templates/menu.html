@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Pizza Wok</title>
-    <link th:href="@{styles/style.css}" rel='stylesheet' type='text/css'></link>
+    <link th:href="@{styles/style.css}" rel='stylesheet' type='text/css'>
+    <script th:src="@{scripts/menu.js}"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -13,12 +14,22 @@
 
         <main>
             <div class="dish_menu">
-                <div class="dish_card" th:each="dish : ${dishes}">
-                    <img class="dish_img" th:src="@{${'/images/content/dishes/' + dish.image}}">
-                    <div class="dish_card_footer">
-                        <p class="dish_name" th:text="${dish.name}">Название блюда</p>
-                        <p class="dish_description" th:text="${dish.description}">Описание блюда</p>
+                <div th:id="${dish.id}" class="dish_card" th:each="dish : ${dishes}">
+                    <div class="dish_card_main_block">
+                        <img class="dish_img" th:src="@{${'/images/content/dishes/' + dish.image}}">
+                            <p class="dish_name" th:text="${dish.name}">Название блюда</p>
+                            <p class="dish_description" th:text="${dish.description}">Описание блюда</p>
                     </div>
+                    <div class="dish_card_footer_block">
+                        <p class="dish_card_price" th:text="${dish.price} + ' р'">Цена</p>
+                        <div class="dish_card_buttons_block">
+                            <button class="dish_plus_button_long">+ добавить</button>
+<!--                            <button class="dish_minus_button_short"> - </button>-->
+<!--                            <p class="dish_card_count"> 0 </p>-->
+<!--                            <button class="dish_plus_button_short"> + </button>-->
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </main>
