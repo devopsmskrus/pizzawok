@@ -7,12 +7,12 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface DishRepository extends CrudRepository<Dish, Integer> {
-    @Query(value = "SELECT * FROM dishes WHERE is_pizza = true", nativeQuery = true)
+    @Query(value = "FROM Dish WHERE isPizza = true")
     List<Dish> getAllPizzas();
 
-    @Query(value = "SELECT * FROM dishes WHERE is_wok = true", nativeQuery = true)
+    @Query(value = "FROM Dish WHERE isWok = true")
     List<Dish> getAllWoks();
 
-    @Query(value = "SELECT * FROM dishes WHERE is_roll = true", nativeQuery = true)
+    @Query(value = "FROM Dish WHERE isRoll = true")
     List<Dish> getAllRolls();
 }

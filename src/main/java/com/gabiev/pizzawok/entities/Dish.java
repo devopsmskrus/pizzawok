@@ -1,24 +1,37 @@
 package com.gabiev.pizzawok.entities;
 
+import jakarta.persistence.*;
 import lombok.Data;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
 
 @Data
-@Entity(name = "dishes")
+@Entity
+@Table(name = "dishes")
 public class Dish {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "isRoll")
     private boolean isRoll;
+
+    @Column(name = "isPizza")
     private boolean isPizza;
+
+    @Column(name = "isWok")
     private boolean isWok;
+
+    @Column(name = "price")
     private int price;
+
+    @Column(name = "image")
     private String image;
+
 }
