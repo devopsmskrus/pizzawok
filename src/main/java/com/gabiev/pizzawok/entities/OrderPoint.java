@@ -33,4 +33,13 @@ public class OrderPoint {
         this.price = dish.getPrice();
     }
 
+    @Override
+    public String toString() {
+        return "OrderPoint{" +
+                "id=" + id +
+                ", dish=" + dish.getId() +
+                ", order=" + order.getId() +
+                ", price=" + price +
+                '}';
+    }
 }

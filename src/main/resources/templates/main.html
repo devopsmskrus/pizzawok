@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Pizza Wok</title>
-    <link th:href="@{styles/style.css}" rel='stylesheet' type='text/css'></link>
+    <link th:href="@{/styles/style.css}" rel='stylesheet' type='text/css'></link>
 </head>
 <body>
 <div class="wrapper">
@@ -22,15 +22,15 @@
                 </h2>
                 <h3 class="main_h3">Наше меню</h3>
                 <div class="main_menu">
-                    <a class="main_menu_button" th:href="@{/pizza}">
+                    <a class="main_menu_button" th:href="@{/menu(menuSection='pizza')}">
                         <img class="main_menu_button_img" th:src="@{/images/interface/main_menu_pizza.png}">
                         <p class="main_menu_button_description">Пицца</p>
                     </a>
-                    <a class="main_menu_button" th:href="@{/wok}">
+                    <a class="main_menu_button" th:href="@{/menu(menuSection='wok')}">
                         <img class="main_menu_button_img" th:src="@{/images/interface/main_menu_wok.png}">
                         <p class="main_menu_button_description">Вок</p>
                     </a>
-                    <a class="main_menu_button" th:href="@{/roll}">
+                    <a class="main_menu_button" th:href="@{/menu(menuSection='roll')}">
                         <img class="main_menu_button_img" th:src="@{/images/interface/main_menu_roll.png}">
                         <p class="main_menu_button_description">Ролл</p>
                     </a>

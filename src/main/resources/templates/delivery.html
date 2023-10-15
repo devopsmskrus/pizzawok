@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pizza Wok</title>
+    <link th:href="@{/styles/style.css}" rel='stylesheet' type='text/css'>
+    <script th:src="@{/scripts/menu.js}"></script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="header_and_main_div">
+
+        <header th:insert="~{fragments/header :: header1}"></header>
+
+        <main>
+            <div class="main_content">
+                <h1>Доставка</h1>
+                <form th:action="@{/cart/delivery}" method="post">
+                    <p>Номер: <input type="text" name="customerPhone"/> </p>
+                    <p>Имя: <input type="text" name="customerName"/> </p>
+                    <p>Адрес: <input type="text" name="address"/> </p>
+                    <p>Подъезд: <input type="number" name="frontDoor"/> </p>
+                    <p>Этаж: <input type="number" name="floor"/> </p>
+                    <p>Квартира: <input type="number" name="apartment"/> </p>
+                    <p>Комментарий: </p>
+                    <textarea name="comment"></textarea>
+                    <input type="submit"/>
+                </form>
+            </div>
+        </main>
+
+    </div>
+
+    <footer th:insert="~{fragments/footer :: footer1}"></footer>
+
+</div>
+
+</body>
+</html>

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Pizza Wok</title>
-    <link th:href="@{styles/style.css}" rel='stylesheet' type='text/css'>
-    <script th:src="@{scripts/menu.js}"></script>
+    <link th:href="@{/styles/style.css}" rel='stylesheet' type='text/css'>
+    <script th:src="@{/scripts/menu.js}"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -23,13 +23,25 @@
                     <div class="dish_card_footer_block">
                         <p class="dish_card_price" th:text="${dish.price} + ' р'">Цена</p>
                         <div class="dish_card_buttons_block">
-                            <button class="dish_plus_button_long">+ добавить</button>
-<!--                            <button class="dish_minus_button_short"> - </button>-->
-<!--                            <p class="dish_card_count"> 0 </p>-->
-<!--                            <button class="dish_plus_button_short"> + </button>-->
+                            <button th:unless="${dishCountInOrderById.containsKey(dish.id)}" class="dish_plus_button_long"
+                                    th:attr="onclick=|document.location='@{/menu/add/__${dish.id}__(menuSection=${menuSection})}'|">
+                                + добавить
+                            </button>
+                            <th:block th:if="${dishCountInOrderById.containsKey(dish.id)}">
+                                <button class="dish_minus_button_short"
+                                        th:attr="onclick=|document.location='@{/menu/remove/__${dish.id}__(menuSection=${menuSection})}'|">
+                                    -
+                                </button>
+
+                                <p class="dish_card_count" th:text="${dishCountInOrderById.get(dish.id)}"> 0 </p>
+
+                                <button class="dish_plus_button_short"
+                                        th:attr="onclick=|document.location='@{/menu/add/__${dish.id}__(menuSection=${menuSection})}'|">
+                                    +
+                                </button>
+                            </th:block>
                         </div>
                     </div>
-
                 </div>
             </div>
         </main>

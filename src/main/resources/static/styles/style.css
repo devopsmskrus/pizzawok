@@ -170,6 +170,7 @@ nav {
     background-color: white;
     color: red;
     padding: 5px 10px;
+    height: 50px;
 }
 
 .dish_minus_button_short, .dish_plus_button_short {
@@ -180,6 +181,7 @@ nav {
     color: red;
     padding: 5px 10px;
     width: 50px;
+    height: 50px;
 }
 
 .dish_plus_button_long:hover,
@@ -277,6 +279,116 @@ nav {
     text-align: left;
     width: 700px;
     font-size: 1.3em;
+}
+
+.order_points_block {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.order_point_card {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 80px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.op_card_img {
+    height: 80px;
+    width: 80px;
+}
+
+.op_card_description {
+    margin: auto 0;
+    width: 450px;
+    font-size: 1.5em;
+}
+
+.op_card_price {
+    margin: auto 0;
+    width: 150px;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.op_remove_button {
+    font-size: 1.5em;
+    border: 2px solid red;
+    border-radius: 25px;
+    background-color: white;
+    color: red;
+    padding: 5px 10px;
+    height: 50px;
+    margin: auto 20px;
+}
+
+.cart_delivery_button {
+    font-size: 1.5em;
+    border: 2px solid red;
+    border-radius: 25px;
+    background-color: white;
+    color: red;
+    padding: 5px 10px;
+    height: 50px;
+    margin: 30px;
+}
+
+.op_remove_button:hover,
+.cart_delivery_button:hover {
+    background-color: red;
+    color: white;
+}
+
+/*.op_card_buttons_block {
+    display: flex;
+    justify-content: space-around;
+    width: 200px;
+}
+
+ .op_minus_button,
+.op_plus_button {
+    font-size: 1.5em;
+    border: 2px solid red;
+    border-radius: 25px;
+    background-color: white;
+    color: red;
+    padding: 5px 10px;
+    width: 50px;
+    height: 50px;
+    margin: auto 0;
+}
+
+.op_minus_button:hover,
+.op_plus_button:hover {
+    background-color: red;
+    color: white;
+}
+
+.op_card_count {
+    font-size: 1.5em;
+    margin: auto 0;
+    padding: 0 10px;
+    font-weight: bold;
+} */
+
+.empty_cart_block {
+    display: flex;
+    flex-direction: column;
+}
+
+.empty_cart_img {
+    height: 400px;
+    width: 400px;
+    margin: 0 auto;
+}
+
+.empty_cart_decription {
+    font-size: 1.5em;
+    text-align: center;
 }
 
 @font-face {

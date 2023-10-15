@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Data
@@ -42,6 +43,7 @@ public class Order {
     private List<OrderPoint> orderPointList;
 
     public interface Status {
+        String ADD = "ADD";
         String COMPLETED = "COMPLETED";
     }
 
@@ -67,4 +69,31 @@ public class Order {
         orderPointList.add(orderPoint);
     }
 
+    public void removeOrderPoint(int dishId) {
+        if (orderPointList == null)
+            return;
+
+        Iterator<OrderPoint> iterator = orderPointList.iterator();
+        while(iterator.hasNext()) {
+            OrderPoint op = iterator.next();
+            if (op.getDish().getId() == id) {
+                orderPointList.remove(op);
+                break;
+            }
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", customerPhone='" + customerPhone + '\'' +
+                ", customerName='" + customerName + '\'' +
+                ", address=" + address +
+                ", comment='" + comment + '\'' +
+                ", addedDatetime=" + addedDatetime +
+                ", expirationDatetime=" + expirationDatetime +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }

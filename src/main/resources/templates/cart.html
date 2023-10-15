@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pizza Wok</title>
+    <link th:href="@{/styles/style.css}" rel='stylesheet' type='text/css'>
+    <script th:src="@{/scripts/menu.js}"></script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="header_and_main_div">
+
+        <header th:insert="~{fragments/header :: header1}"></header>
+
+        <main>
+            <div class="main_content">
+                <h1 class="main_h1">Корзина</h1>
+                <th:block th:if="${order.getOrderPointList().size() > 0}">
+                    <button class="op_remove_button"
+                            th:attr="onclick=|document.location='@{/cart/remove}'|">
+                        очистить
+                    </button>
+                    <div class="order_points_block">
+                        <div class="order_point_card" th:each="orderPoint : ${order.getOrderPointList()}">
+                            <img class="op_card_img" th:src="@{${'/images/content/dishes/' + orderPoint.getDish().image}}">
+                            <p class="op_card_description" th:text="${orderPoint.getDish().getName()}">Описание блюда</p>
+                            <p class="op_card_price" th:text="${orderPoint.getPrice() + ' р'}"> 0 </p>
+                            <button class="op_remove_button"
+                                    th:attr="onclick=|document.location='@{/cart/remove/__${orderPoint.getDish().getId()}__}'|">
+                                удалить
+                            </button>
+                            <!--<div class="op_card_buttons_block">
+                                <button class="op_minus_button"
+                                        th:attr="onclick=|document.location='@{/cart/add/__${orderPoint.getDish().getId()}}'|">
+                                    -
+                                </button>
+
+                                <p class="op_card_count" th:text="${dishCountInOrderById.get(orderPoint.getDish().getId())}"> 0 </p>
+
+                                <button class="op_plus_button"
+                                        th:attr="onclick=|document.location='@{/cart/remove/__${orderPoint.getDish().getId()}}'|">
+                                    +
+                                </button>
+                            </div>-->
+                        </div>
+                        <button class="cart_delivery_button"
+                                th:attr="onclick=|document.location='@{/cart/delivery}'|">
+                            доставка
+                        </button>
+                    </div>
+                </th:block>
+                <div class="empty_cart_block" th:unless="${order.getOrderPointList().size() > 0}">
+                    <img class="empty_cart_img" th:src="@{/images/interface/cart_big.png}">
+                    <p class="empty_cart_decription">Ваша корзина пуста. Добавьте блюда из нашего меню.</p>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <footer th:insert="~{fragments/footer :: footer1}"></footer>
+
+</div>
+
+</body>
+</html>
