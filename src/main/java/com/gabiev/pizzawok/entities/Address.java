@@ -1,6 +1,7 @@
 package com.gabiev.pizzawok.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
@@ -13,6 +14,7 @@ public class Address {
     private int id;
 
     @Column(name = "address")
+    @NotBlank(message = "Введите адрес")
     private String address;
 
     @Column(name = "front_door")

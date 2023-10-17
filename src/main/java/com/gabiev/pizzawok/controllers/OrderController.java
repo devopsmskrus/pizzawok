@@ -7,11 +7,14 @@ import com.gabiev.pizzawok.entities.OrderPoint;
 import com.gabiev.pizzawok.repositories.DishRepository;
 import com.gabiev.pizzawok.repositories.OrderRepository;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDateTime;
@@ -122,28 +125,39 @@ public class OrderController {
     }
 
     @GetMapping("/cart/delivery")
-    public String getDeliveryForm() {
+    public String getDeliveryForm(Model model) {
+        Order order = (Order) model.getAttribute("order");
+        if (order.getOrderPointList().isEmpty()) {
+            return "cart";
+        }
+
+        order.setAddress(new Address());
         return "delivery";
     }
 
     @PostMapping("/cart/delivery")
-    public String setOrder(Model model, @RequestParam Map<String, String> params, SessionStatus status) {
-        Order order = (Order) model.getAttribute("order");
-        order.setCustomerPhone(params.get("customerPhone"));
-        order.setCustomerName(params.get("customerName"));
-        order.setComment(params.get("comment"));
+    public String setOrder(@Valid @ModelAttribute Order order, BindingResult bindingResultOrder
+            //, @Valid @ModelAttribute Address address, BindingResult bindingResultAddress
+            , SessionStatus status) {
+        if (order.getOrderPointList().isEmpty()) {
+            return "cart";
+        }
+
+        if (bindingResultOrder.hasErrors() /*|| bindingResultAddress.hasErrors()*/) {
+            return "delivery";
+        }
+
+        String phone = order.getCustomerPhone().replace(" ", "").replace("+", "");
+        order.setCustomerPhone(phone);
         order.setAddedDatetime(LocalDateTime.now());
         order.setStatus(Order.Status.ADD);
-        Address address = new Address();
-        address.setAddress(params.get("address"));
-        address.setFrontDoor(Integer.valueOf(params.get("frontDoor")));
-        address.setFloor(Integer.valueOf(params.get("floor")));
-        address.setApartment(Integer.valueOf(params.get("apartment")));
-        order.setAddress(address);
-
         orderRepo.save(order);
         status.setComplete();
+        return "redirect:/order_completed";
+    }
 
-        return "order";
+    @RequestMapping("/order_completed")
+    public String getOrderCompletedForm() {
+        return "orderCompleted";
     }
 }

@@ -1,6 +1,8 @@
 package com.gabiev.pizzawok.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -18,13 +20,16 @@ public class Order {
     private int id;
 
     @Column(name = "customer_phone")
+    @NotBlank(message = "Введите номер телефона")
     private String customerPhone;
 
     @Column(name = "customer_name")
+    @NotBlank(message = "Введите имя")
     private String customerName;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
+    @Valid
     private Address address;
 
     @Column(name = "comment")
@@ -48,7 +53,7 @@ public class Order {
     }
 
     public Order() {
-
+        this.orderPointList = new ArrayList<>();
     }
 
     public Order(String customerPhone, String customerName, Address address, String comment, LocalDateTime addedDatetime, LocalDateTime expirationDatetime, String status) {
@@ -59,6 +64,7 @@ public class Order {
         this.addedDatetime = addedDatetime;
         this.expirationDatetime = expirationDatetime;
         this.status = status;
+        this.orderPointList = new ArrayList<>();
     }
 
     public void addOrderPoint(Dish dish) {

@@ -334,7 +334,8 @@ nav {
     color: red;
     padding: 5px 10px;
     height: 50px;
-    margin: 30px;
+    width: 200px;
+    margin: 30px auto;
 }
 
 .op_remove_button:hover,
@@ -342,38 +343,6 @@ nav {
     background-color: red;
     color: white;
 }
-
-/*.op_card_buttons_block {
-    display: flex;
-    justify-content: space-around;
-    width: 200px;
-}
-
- .op_minus_button,
-.op_plus_button {
-    font-size: 1.5em;
-    border: 2px solid red;
-    border-radius: 25px;
-    background-color: white;
-    color: red;
-    padding: 5px 10px;
-    width: 50px;
-    height: 50px;
-    margin: auto 0;
-}
-
-.op_minus_button:hover,
-.op_plus_button:hover {
-    background-color: red;
-    color: white;
-}
-
-.op_card_count {
-    font-size: 1.5em;
-    margin: auto 0;
-    padding: 0 10px;
-    font-weight: bold;
-} */
 
 .empty_cart_block {
     display: flex;
@@ -389,6 +358,92 @@ nav {
 .empty_cart_decription {
     font-size: 1.5em;
     text-align: center;
+}
+
+.address_h1 {
+    width: 100%;
+    text-align: center;
+}
+
+.address_form {
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+    margin: 10px auto;
+}
+
+.af_customer_block {
+    display: flex;
+    width: 100%;
+}
+
+.af_address_block {
+    display: flex;
+    width: 100%;
+}
+
+.input_element {
+    padding: 10px 10px;
+    width: 100%;
+}
+
+.address_form input {
+    height: 30px;
+    width: 100%;
+    font-size: 1.2em;
+    padding-left: 5px;
+}
+
+.address_form textarea {
+    height: 60px;
+    width: 100%;
+    padding: 5px;
+    font-size: 1.2em;
+}
+
+.address_form input[name=address] {
+    font-size: 0.8em;
+}
+
+.address_form input[type=submit] {
+    font-size: 1.5em;
+    border: 2px solid red;
+    border-radius: 25px;
+    background-color: white;
+    color: red;
+    padding: 5px 10px;
+    height: 50px;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.address_form input[type=submit]:hover {
+    background-color: red;
+    color: white;
+}
+
+.input_error_msg {
+    color: red;
+    font-size: 0.8em;
+}
+
+.submit_error_msg {
+    color: red;
+    font-size: 0.8em;
+    margin: 10px auto;
+}
+
+.order_complete_h1 {
+    text-align: center;
+}
+
+.oc_description {
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.oc_img {
+    margin-left: 260px;
 }
 
 @font-face {
