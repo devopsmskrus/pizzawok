@@ -6,6 +6,7 @@ import com.gabiev.pizzawok.entities.Order;
 import com.gabiev.pizzawok.entities.OrderPoint;
 import com.gabiev.pizzawok.repositories.DishRepository;
 import com.gabiev.pizzawok.repositories.OrderRepository;
+import com.gabiev.pizzawok.services.MainService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +28,7 @@ import java.util.stream.Collectors;
 public class OrderController {
 
     @Autowired
-    private DishRepository dishRepo;
-
-    @Autowired
-    private OrderRepository orderRepo;
+    private MainService mainService;
 
     @ModelAttribute
     private Order order() {
@@ -40,35 +38,13 @@ public class OrderController {
     @RequestMapping("/menu")
     public String getMenu(Model model, @RequestParam String menuSection) {
 
-        List<Dish> dishes = new ArrayList<>();
-        if (menuSection.equals("pizza")) {
-            dishes = dishRepo.getAllPizzas();
-        } else if (menuSection.equals("wok")) {
-            dishes = dishRepo.getAllWoks();
-        } else if (menuSection.equals("roll")) {
-            dishes = dishRepo.getAllRolls();
-        }
+        List<Dish> dishes = mainService.getDishes4MenuSection(menuSection);
         model.addAttribute("dishes", dishes);
-
         Order order = (Order) model.getAttribute("order");
-        model.addAttribute("dishCountInOrderById", getDishCountInOrderById(order));
-
+        model.addAttribute("dishCountInOrderById", mainService.getDishCountInOrderById(order));
         model.addAttribute("menuSection", menuSection);
 
         return "menu";
-    }
-
-    /**
-    * key=dish_id, value=count_in_order
-    */
-    private Map<Integer, Integer> getDishCountInOrderById(Order order) {
-        Map<Integer, Integer> map = new HashMap<>();
-        if (order.getOrderPointList() != null) {
-
-            map = order.getOrderPointList().stream()
-                    .collect(Collectors.toMap(k -> k.getDish().getId(), v -> 1, Integer::sum));
-        }
-        return map;
     }
 
     @RequestMapping("/menu/add/{id}")
@@ -79,12 +55,12 @@ public class OrderController {
             , RedirectAttributes ra) {
 
         Order order = (Order) model.getAttribute("order");
-        order.addOrderPoint(dishRepo.findById(id).get());
+        order.addOrderPoint(mainService.getDish(id));
         ra.addAttribute("menuSection", menuSection);
         return "redirect:/menu";
     }
 
-    @RequestMapping("/menu/remove/{id}")
+    @RequestMapping("/menu/delete/{id}")
     public String delDishFromMenu(
             Model model
             , @PathVariable int id
@@ -93,32 +69,24 @@ public class OrderController {
             , RedirectAttributes ra) {
 
         Order order = (Order) model.getAttribute("order");
-        order.removeOrderPoint(id);
+        order.deleteOrderPoint(id);
         ra.addAttribute("menuSection", menuSection);
         return "redirect:/menu";
     }
 
     @RequestMapping("/cart")
-    public String getCart(/*Model model*/) {
-        //Order order = (Order) model.getAttribute("order");
-        //model.addAttribute("dishCountInOrderById", getDishCountInOrderById(order));
+    public String getCart() {
         return "cart";
     }
 
-    /*@RequestMapping("/cart/add/{id}")
-    public String addDishFromCart(@ModelAttribute("order") Order order, @PathVariable int id) {
-        order.addOrderPoint(dishRepo.findById(id).get());
-        return "redirect:/cart";
-    }*/
-
-    @RequestMapping("/cart/remove/{id}")
-    public String removeDishFromCart(Model model, @PathVariable int id) {
+    @RequestMapping("/cart/delete/{id}")
+    public String deleteDishFromCart(Model model, @PathVariable int id) {
         Order order = (Order) model.getAttribute("order");
-        order.removeOrderPoint(id);
+        order.deleteOrderPoint(id);
         return "redirect:/cart";
     }
-    @RequestMapping("/cart/remove")
-    public String removeAllDishFromCart(Model model) {
+    @RequestMapping("/cart/delete")
+    public String deleteAllDishFromCart(Model model) {
         Order order = (Order) model.getAttribute("order");
         order.getOrderPointList().clear();
         return "redirect:/cart";
@@ -131,27 +99,21 @@ public class OrderController {
             return "cart";
         }
 
-        order.setAddress(new Address());
+        if (order.getAddress() == null)
+            order.setAddress(new Address());
+
         return "delivery";
     }
 
     @PostMapping("/cart/delivery")
-    public String setOrder(@Valid @ModelAttribute Order order, BindingResult bindingResultOrder
-            //, @Valid @ModelAttribute Address address, BindingResult bindingResultAddress
+    public String saveOrder(@Valid @ModelAttribute Order order, BindingResult bindingResultOrder
             , SessionStatus status) {
-        if (order.getOrderPointList().isEmpty()) {
-            return "cart";
-        }
 
-        if (bindingResultOrder.hasErrors() /*|| bindingResultAddress.hasErrors()*/) {
+        if (bindingResultOrder.hasErrors()) {
             return "delivery";
         }
 
-        String phone = order.getCustomerPhone().replace(" ", "").replace("+", "");
-        order.setCustomerPhone(phone);
-        order.setAddedDatetime(LocalDateTime.now());
-        order.setStatus(Order.Status.ADD);
-        orderRepo.save(order);
+        mainService.saveOrder(order);
         status.setComplete();
         return "redirect:/order_completed";
     }

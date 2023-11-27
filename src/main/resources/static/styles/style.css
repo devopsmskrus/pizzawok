@@ -315,7 +315,7 @@ nav {
     text-align: center;
 }
 
-.op_remove_button {
+.op_delete_button {
     font-size: 1.5em;
     border: 2px solid red;
     border-radius: 25px;
@@ -338,7 +338,7 @@ nav {
     margin: 30px auto;
 }
 
-.op_remove_button:hover,
+.op_delete_button:hover,
 .cart_delivery_button:hover {
     background-color: red;
     color: white;

@@ -75,14 +75,14 @@ public class Order {
         orderPointList.add(orderPoint);
     }
 
-    public void removeOrderPoint(int dishId) {
+    public void deleteOrderPoint(int dishId) {
         if (orderPointList == null)
             return;
 
         Iterator<OrderPoint> iterator = orderPointList.iterator();
         while(iterator.hasNext()) {
             OrderPoint op = iterator.next();
-            if (op.getDish().getId() == id) {
+            if (op.getDish().getId() == dishId) {
                 orderPointList.remove(op);
                 break;
             }

@@ -29,7 +29,7 @@
                             </button>
                             <th:block th:if="${dishCountInOrderById.containsKey(dish.id)}">
                                 <button class="dish_minus_button_short"
-                                        th:attr="onclick=|document.location='@{/menu/remove/__${dish.id}__(menuSection=${menuSection})}'|">
+                                        th:attr="onclick=|document.location='@{/menu/delete/__${dish.id}__(menuSection=${menuSection})}'|">
                                     -
                                 </button>
 

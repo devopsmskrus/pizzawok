@@ -16,8 +16,8 @@
             <div class="main_content">
                 <h1 class="main_h1">Корзина</h1>
                 <th:block th:if="${order.getOrderPointList().size() > 0}">
-                    <button class="op_remove_button"
-                            th:attr="onclick=|document.location='@{/cart/remove}'|">
+                    <button class="op_delete_button"
+                            th:attr="onclick=|document.location='@{/cart/delete}'|">
                         очистить
                     </button>
                     <div class="order_points_block">
@@ -25,8 +25,8 @@
                             <img class="op_card_img" th:src="@{${'/images/content/dishes/' + orderPoint.getDish().image}}">
                             <p class="op_card_description" th:text="${orderPoint.getDish().getName()}">Описание блюда</p>
                             <p class="op_card_price" th:text="${orderPoint.getPrice() + ' р'}"> 0 </p>
-                            <button class="op_remove_button"
-                                    th:attr="onclick=|document.location='@{/cart/remove/__${orderPoint.getDish().getId()}__}'|">
+                            <button class="op_delete_button"
+                                    th:attr="onclick=|document.location='@{/cart/delete/__${orderPoint.getDish().getId()}__}'|">
                                 удалить
                             </button>
                             <!--<div class="op_card_buttons_block">
@@ -38,7 +38,7 @@
                                 <p class="op_card_count" th:text="${dishCountInOrderById.get(orderPoint.getDish().getId())}"> 0 </p>
 
                                 <button class="op_plus_button"
-                                        th:attr="onclick=|document.location='@{/cart/remove/__${orderPoint.getDish().getId()}}'|">
+                                        th:attr="onclick=|document.location='@{/cart/delete/__${orderPoint.getDish().getId()}}'|">
                                     +
                                 </button>
                             </div>-->
