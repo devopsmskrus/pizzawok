@@ -34,4 +34,19 @@ public class Dish {
     @Column(name = "image")
     private String image;
 
+    public enum Type {
+        PIZZA,
+        WOK,
+        ROLL
+    }
+
+    public void setType(Type type) {
+        if (type == Type.PIZZA)
+            isPizza = true;
+        else if (type == Type.WOK)
+            isWok = true;
+        else if (type == Type.ROLL)
+            isRoll = true;
+    }
+
 }
